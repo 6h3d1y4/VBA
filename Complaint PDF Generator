@@ -1,0 +1,18 @@
+
+
+Private Sub CommandButton1_Click()
+
+Worksheets("Sheet1").Activate
+Dim fname As String
+fname = Range("E2").Text
+Dim fpath As String
+Dim fd As String
+fpath = "E:\Bank Work\Complaint Format\Complaint Format\Complaints\"
+fd = Format(Date, "dd.mm.yyyy")
+If Len(Dir(fpath & fd, vbDirectory)) = 0 Then MkDir (fpath & fd)
+With ActiveSheet
+    .PageSetup.PrintArea = "$B$2:$G$23"
+    .ExportAsFixedFormat Type:=xlTypePDF, Filename:=fpath & fname & ".pdf", Quality:=xlQualityStandard, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=False
+End With
+
+End Sub
