@@ -1,0 +1,1293 @@
+Sub Recon()
+Dim myFolder As String
+Dim myFile As String
+Dim folderName As String
+
+With Application.FileDialog(msoFileDialogFolderPicker)
+.AllowMultiSelect = False
+If .Show = -1 Then
+folderName = .SelectedItems(1)
+End If
+End With
+
+myFile = Dir(folderName & "\*.xls")
+
+Do While myFile <> ""
+    Workbooks.Open Filename:=folderName & "\" & myFile
+    Application.DisplayAlerts = False
+    
+    ActiveWorkbook.Worksheets(1).Range("K4") = "Year"
+    ActiveWorkbook.Worksheets(1).Range("Q4") = "Year"
+    ActiveWorkbook.Worksheets(1).Range("L4") = "Month"
+    ActiveWorkbook.Worksheets(1).Range("M4") = "Total_credit"
+    ActiveWorkbook.Worksheets(1).Range("R4") = "Total_credit"
+    ActiveWorkbook.Worksheets(1).Range("N4") = "Total_debit"
+    ActiveWorkbook.Worksheets(1).Range("S4") = "Total_debit"
+    ActiveWorkbook.Worksheets(1).Range("O4") = "Difference"
+    ActiveWorkbook.Worksheets(1).Range("T4") = "Difference"
+    ActiveWorkbook.Worksheets(1).Range("Q5") = "2015"
+    ActiveWorkbook.Worksheets(1).Range("Q6") = "2016"
+    ActiveWorkbook.Worksheets(1).Range("Q7") = "2017"
+    ActiveWorkbook.Worksheets(1).Range("Q8") = "2018"
+    ActiveWorkbook.Worksheets(1).Range("Q9") = "2019"
+    ActiveWorkbook.Worksheets(1).Range("Q10") = "2020"
+    ActiveWorkbook.Worksheets(1).Range("Q11") = "2021"
+    ActiveWorkbook.Worksheets(1).Range("Q12") = "Total"
+    
+    ActiveWorkbook.Worksheets(1).Range("K3:O3").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    ActiveWorkbook.Worksheets(1).Range("K3:O3") = "Year/Month Wise Analysis"
+    
+    ActiveWorkbook.Worksheets(1).Range("Q3:T3").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    ActiveWorkbook.Worksheets(1).Range("Q3:T3") = "Final Validation"
+    
+'2015
+    ActiveWorkbook.Worksheets(1).Range("K5:K16") = "2015"
+
+'January 2015
+    ActiveWorkbook.Worksheets(1).Range("L5") = "January"
+    
+    ActiveWorkbook.Worksheets(1).Range("M5").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/01/2015"",C[-8],""<=31/01/2015"",C[-9],""C"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("N5").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/01/2015"",C[-9],""<=31/01/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O5").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'February 2015
+    ActiveWorkbook.Worksheets(1).Range("L6") = "February"
+    
+    ActiveWorkbook.Worksheets(1).Range("M6").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/02/2015"",C[-8],""<=28/02/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N6").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/02/2015"",C[-9],""<=28/02/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O6").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'March 2015
+    ActiveWorkbook.Worksheets(1).Range("L7") = "March"
+    
+    ActiveWorkbook.Worksheets(1).Range("M7").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/03/2015"",C[-8],""<=31/03/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N7").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/03/2015"",C[-9],""<=31/03/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O7").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'April 2015
+    ActiveWorkbook.Worksheets(1).Range("L8") = "April"
+    
+    ActiveWorkbook.Worksheets(1).Range("M8").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/04/2015"",C[-8],""<=30/04/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N8").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/04/2015"",C[-9],""<=30/04/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O8").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'May 2015
+    ActiveWorkbook.Worksheets(1).Range("L9") = "May"
+    
+    ActiveWorkbook.Worksheets(1).Range("M9").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/05/2015"",C[-8],""<=31/05/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N9").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/05/2015"",C[-9],""<=31/05/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O9").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'June 2015
+    ActiveWorkbook.Worksheets(1).Range("L10") = "June"
+    
+    ActiveWorkbook.Worksheets(1).Range("M10").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/06/2015"",C[-8],""<=30/06/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N10").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/06/2015"",C[-9],""<=30/06/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O10").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'July 2015
+    ActiveWorkbook.Worksheets(1).Range("L11") = "July"
+    
+    ActiveWorkbook.Worksheets(1).Range("M11").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/07/2015"",C[-8],""<=31/07/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N11").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/07/2015"",C[-9],""<=31/07/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O11").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'August 2015
+    ActiveWorkbook.Worksheets(1).Range("L12") = "August"
+    
+    ActiveWorkbook.Worksheets(1).Range("M12").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/08/2015"",C[-8],""<=31/08/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N12").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/08/2015"",C[-9],""<=31/08/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O12").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'September 2015
+    ActiveWorkbook.Worksheets(1).Range("L13") = "September"
+    
+    ActiveWorkbook.Worksheets(1).Range("M13").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/09/2015"",C[-8],""<=30/09/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N13").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/09/2015"",C[-9],""<=30/09/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O13").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'October 2015
+    ActiveWorkbook.Worksheets(1).Range("L14") = "October"
+    
+    ActiveWorkbook.Worksheets(1).Range("M14").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/10/2015"",C[-8],""<=31/10/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N14").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/10/2015"",C[-9],""<=31/10/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O14").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'November 2015
+    ActiveWorkbook.Worksheets(1).Range("L15") = "November"
+    
+    ActiveWorkbook.Worksheets(1).Range("M15").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/11/2015"",C[-8],""<=30/11/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N15").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/11/2015"",C[-9],""<=30/11/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O15").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'December 2015
+    ActiveWorkbook.Worksheets(1).Range("L16") = "December"
+    
+    ActiveWorkbook.Worksheets(1).Range("M16").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/12/2015"",C[-8],""<=31/12/2015"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N16").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/12/2015"",C[-9],""<=31/12/2015"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O16").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'2015 Total
+    ActiveWorkbook.Worksheets(1).Range("K17") = "Total"
+    
+    ActiveWorkbook.Worksheets(1).Range("M17").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("N17").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+    ActiveWorkbook.Worksheets(1).Range("O17").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+'2016
+    ActiveWorkbook.Worksheets(1).Range("K18:K29") = "2016"
+    
+'January 2016
+    ActiveWorkbook.Worksheets(1).Range("L18") = "January"
+    
+    ActiveWorkbook.Worksheets(1).Range("M18").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/01/2016"",C[-8],""<=31/01/2016"",C[-9],""C"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("N18").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/01/2016"",C[-9],""<=31/01/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O18").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'February 2016
+    ActiveWorkbook.Worksheets(1).Range("L19") = "February"
+    
+    ActiveWorkbook.Worksheets(1).Range("M19").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/02/2016"",C[-8],""<=29/02/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N19").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/02/2016"",C[-9],""<=29/02/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O19").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'March 2016
+    ActiveWorkbook.Worksheets(1).Range("L20") = "March"
+    
+    ActiveWorkbook.Worksheets(1).Range("M20").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/03/2016"",C[-8],""<=31/03/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N20").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/03/2016"",C[-9],""<=31/03/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O20").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+ 'April 2016
+    ActiveWorkbook.Worksheets(1).Range("L21") = "April"
+    
+    ActiveWorkbook.Worksheets(1).Range("M21").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/04/2016"",C[-8],""<=30/04/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N21").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/04/2016"",C[-9],""<=30/04/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O21").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+ 'May 2016
+    ActiveWorkbook.Worksheets(1).Range("L22") = "May"
+    
+    ActiveWorkbook.Worksheets(1).Range("M22").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/05/2016"",C[-8],""<=31/05/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N22").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/05/2016"",C[-9],""<=31/05/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O22").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+ 'June 2016
+    ActiveWorkbook.Worksheets(1).Range("L23") = "June"
+    
+    ActiveWorkbook.Worksheets(1).Range("M23").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/06/2016"",C[-8],""<=30/06/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N23").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/06/2016"",C[-9],""<=30/06/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O23").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+ 'July 2016
+    ActiveWorkbook.Worksheets(1).Range("L24") = "July"
+    
+    ActiveWorkbook.Worksheets(1).Range("M24").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/07/2016"",C[-8],""<=31/07/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N24").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/07/2016"",C[-9],""<=31/07/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O24").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'August 2016
+    ActiveWorkbook.Worksheets(1).Range("L25") = "August"
+    
+    ActiveWorkbook.Worksheets(1).Range("M25").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/08/2016"",C[-8],""<=31/08/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N25").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/08/2016"",C[-9],""<=31/08/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O25").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+  
+'September 2016
+    ActiveWorkbook.Worksheets(1).Range("L26") = "September"
+    
+    ActiveWorkbook.Worksheets(1).Range("M26").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/09/2016"",C[-8],""<=30/09/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N26").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/09/2016"",C[-9],""<=30/09/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O26").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'October 2016
+    ActiveWorkbook.Worksheets(1).Range("L27") = "October"
+    
+    ActiveWorkbook.Worksheets(1).Range("M27").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/10/2016"",C[-8],""<=31/10/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N27").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/10/2016"",C[-9],""<=31/10/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O27").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'November 2016
+    ActiveWorkbook.Worksheets(1).Range("L28") = "November"
+    
+    ActiveWorkbook.Worksheets(1).Range("M28").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/11/2016"",C[-8],""<=30/11/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N28").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/11/2016"",C[-9],""<=30/11/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O28").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'December 2016
+    ActiveWorkbook.Worksheets(1).Range("L29") = "December"
+    
+    ActiveWorkbook.Worksheets(1).Range("M29").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/12/2016"",C[-8],""<=31/12/2016"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N29").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/12/2016"",C[-9],""<=31/12/2016"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O29").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'2016 Total
+    ActiveWorkbook.Worksheets(1).Range("K30") = "Total"
+    
+    ActiveWorkbook.Worksheets(1).Range("M30").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("N30").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+    ActiveWorkbook.Worksheets(1).Range("O30").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+'2017
+    ActiveWorkbook.Worksheets(1).Range("K31:K42") = "2017"
+    
+'January 2017
+    ActiveWorkbook.Worksheets(1).Range("L31") = "January"
+    
+    ActiveWorkbook.Worksheets(1).Range("M31").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/01/2017"",C[-8],""<=31/01/2017"",C[-9],""C"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("N31").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/01/2017"",C[-9],""<=31/01/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O31").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'February 2017
+    ActiveWorkbook.Worksheets(1).Range("L32") = "February"
+    
+    ActiveWorkbook.Worksheets(1).Range("M32").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/02/2017"",C[-8],""<=28/02/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N32").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/02/2017"",C[-9],""<=28/02/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O32").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'March 2017
+    ActiveWorkbook.Worksheets(1).Range("L33") = "March"
+    
+    ActiveWorkbook.Worksheets(1).Range("M33").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/03/2017"",C[-8],""<=31/03/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N33").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/03/2017"",C[-9],""<=31/03/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O33").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'April 2017
+    ActiveWorkbook.Worksheets(1).Range("L34") = "April"
+    
+    ActiveWorkbook.Worksheets(1).Range("M34").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/04/2017"",C[-8],""<=30/04/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N34").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/04/2017"",C[-9],""<=30/04/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O34").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'May 2017
+    ActiveWorkbook.Worksheets(1).Range("L35") = "May"
+    
+    ActiveWorkbook.Worksheets(1).Range("M35").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/05/2017"",C[-8],""<=31/05/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N35").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/05/2017"",C[-9],""<=31/05/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O35").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'June 2017
+    ActiveWorkbook.Worksheets(1).Range("L36") = "June"
+    
+    ActiveWorkbook.Worksheets(1).Range("M36").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/06/2017"",C[-8],""<=30/06/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N36").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/06/2017"",C[-9],""<=30/06/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O36").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'July 2017
+    ActiveWorkbook.Worksheets(1).Range("L37") = "July"
+    
+    ActiveWorkbook.Worksheets(1).Range("M37").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/07/2017"",C[-8],""<=31/07/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N37").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/07/2017"",C[-9],""<=31/07/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O37").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'August 2017
+    ActiveWorkbook.Worksheets(1).Range("L38") = "August"
+    
+    ActiveWorkbook.Worksheets(1).Range("M38").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/08/2017"",C[-8],""<=31/08/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N38").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/08/2017"",C[-9],""<=31/08/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O38").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'September 2017
+    ActiveWorkbook.Worksheets(1).Range("L39") = "September"
+    
+    ActiveWorkbook.Worksheets(1).Range("M39").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/09/2017"",C[-8],""<=30/09/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N39").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/09/2017"",C[-9],""<=30/09/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O39").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+ 'October 2017
+    ActiveWorkbook.Worksheets(1).Range("L40") = "October"
+    
+    ActiveWorkbook.Worksheets(1).Range("M40").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/10/2017"",C[-8],""<=31/10/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N40").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/10/2017"",C[-9],""<=31/10/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O40").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'November 2017
+    ActiveWorkbook.Worksheets(1).Range("L41") = "November"
+    
+    ActiveWorkbook.Worksheets(1).Range("M41").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/11/2017"",C[-8],""<=30/11/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N41").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/11/2017"",C[-9],""<=30/11/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O41").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'December 2017
+    ActiveWorkbook.Worksheets(1).Range("L42") = "December"
+    
+    ActiveWorkbook.Worksheets(1).Range("M42").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/12/2017"",C[-8],""<=31/12/2017"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N42").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/12/2017"",C[-9],""<=31/12/2017"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O42").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'2017 Total
+    ActiveWorkbook.Worksheets(1).Range("K43") = "Total"
+    
+    ActiveWorkbook.Worksheets(1).Range("M43").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("N43").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+    ActiveWorkbook.Worksheets(1).Range("O43").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+'2018
+    ActiveWorkbook.Worksheets(1).Range("K44:K55") = "2018"
+    
+'January 2018
+    ActiveWorkbook.Worksheets(1).Range("L44") = "January"
+    
+    ActiveWorkbook.Worksheets(1).Range("M44").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/01/2018"",C[-8],""<=31/01/2018"",C[-9],""C"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("N44").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/01/2018"",C[-9],""<=31/01/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O44").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'February 2018
+    ActiveWorkbook.Worksheets(1).Range("L45") = "February"
+    
+    ActiveWorkbook.Worksheets(1).Range("M45").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/02/2018"",C[-8],""<=28/02/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N45").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/02/2018"",C[-9],""<=28/02/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O45").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'March 2018
+    ActiveWorkbook.Worksheets(1).Range("L46") = "March"
+    
+    ActiveWorkbook.Worksheets(1).Range("M46").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/03/2018"",C[-8],""<=31/03/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N46").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/03/2018"",C[-9],""<=31/03/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O46").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'April 2018
+    ActiveWorkbook.Worksheets(1).Range("L47") = "April"
+    
+    ActiveWorkbook.Worksheets(1).Range("M47").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/04/2018"",C[-8],""<=30/04/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N47").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/04/2018"",C[-9],""<=30/04/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O47").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'May 2018
+    ActiveWorkbook.Worksheets(1).Range("L48") = "May"
+    
+    ActiveWorkbook.Worksheets(1).Range("M48").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/05/2018"",C[-8],""<=31/05/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N48").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/05/2018"",C[-9],""<=31/05/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O48").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'June 2018
+    ActiveWorkbook.Worksheets(1).Range("L49") = "June"
+    
+    ActiveWorkbook.Worksheets(1).Range("M49").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/06/2018"",C[-8],""<=30/06/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N49").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/06/2018"",C[-9],""<=30/06/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O49").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'July 2018
+    ActiveWorkbook.Worksheets(1).Range("L50") = "July"
+    
+    ActiveWorkbook.Worksheets(1).Range("M50").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/07/2018"",C[-8],""<=31/07/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N50").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/07/2018"",C[-9],""<=31/07/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O50").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'August 2018
+    ActiveWorkbook.Worksheets(1).Range("L51") = "August"
+    
+    ActiveWorkbook.Worksheets(1).Range("M51").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/08/2018"",C[-8],""<=31/08/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N51").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/08/2018"",C[-9],""<=31/08/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O51").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'September 2018
+    ActiveWorkbook.Worksheets(1).Range("L52") = "September"
+    
+    ActiveWorkbook.Worksheets(1).Range("M52").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/09/2018"",C[-8],""<=30/09/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N52").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/09/2018"",C[-9],""<=30/09/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O52").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'October 2018
+    ActiveWorkbook.Worksheets(1).Range("L53") = "October"
+    
+    ActiveWorkbook.Worksheets(1).Range("M53").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/10/2018"",C[-8],""<=31/10/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N53").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/10/2018"",C[-9],""<=31/10/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O53").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'November 2018
+    ActiveWorkbook.Worksheets(1).Range("L54") = "November"
+    
+    ActiveWorkbook.Worksheets(1).Range("M54").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/11/2018"",C[-8],""<=30/11/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N54").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/11/2018"",C[-9],""<=30/11/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O54").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'December 2018
+    ActiveWorkbook.Worksheets(1).Range("L55") = "December"
+    
+    ActiveWorkbook.Worksheets(1).Range("M55").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/12/2018"",C[-8],""<=31/12/2018"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N55").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/12/2018"",C[-9],""<=31/12/2018"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O55").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+ '2018 Total
+    ActiveWorkbook.Worksheets(1).Range("K56") = "Total"
+    
+    ActiveWorkbook.Worksheets(1).Range("M56").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("N56").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+    ActiveWorkbook.Worksheets(1).Range("O56").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+ '2019
+    ActiveWorkbook.Worksheets(1).Range("K57:K68") = "2019"
+    
+'January 2019
+    ActiveWorkbook.Worksheets(1).Range("L57") = "January"
+    
+    ActiveWorkbook.Worksheets(1).Range("M57").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/01/2019"",C[-8],""<=31/01/2019"",C[-9],""C"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("N57").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/01/2019"",C[-9],""<=31/01/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O57").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'February 2019
+    ActiveWorkbook.Worksheets(1).Range("L58") = "February"
+    
+    ActiveWorkbook.Worksheets(1).Range("M58").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/02/2019"",C[-8],""<=28/02/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N58").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/02/2019"",C[-9],""<=28/02/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O58").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'March 2019
+    ActiveWorkbook.Worksheets(1).Range("L59") = "March"
+    
+    ActiveWorkbook.Worksheets(1).Range("M59").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/03/2019"",C[-8],""<=31/03/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N59").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/03/2019"",C[-9],""<=31/03/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O59").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'April 2019
+    ActiveWorkbook.Worksheets(1).Range("L60") = "April"
+    
+    ActiveWorkbook.Worksheets(1).Range("M60").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/04/2019"",C[-8],""<=30/04/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N60").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/04/2019"",C[-9],""<=30/04/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O60").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'May 2019
+    ActiveWorkbook.Worksheets(1).Range("L61") = "May"
+    
+    ActiveWorkbook.Worksheets(1).Range("M61").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/05/2019"",C[-8],""<=31/05/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N61").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/05/2019"",C[-9],""<=31/05/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O61").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'June 2019
+    ActiveWorkbook.Worksheets(1).Range("L62") = "June"
+    
+    ActiveWorkbook.Worksheets(1).Range("M62").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/06/2019"",C[-8],""<=30/06/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N62").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/06/2019"",C[-9],""<=30/06/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O62").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'July 2019
+    ActiveWorkbook.Worksheets(1).Range("L63") = "July"
+    
+    ActiveWorkbook.Worksheets(1).Range("M63").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/07/2019"",C[-8],""<=31/07/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N63").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/07/2019"",C[-9],""<=31/07/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O63").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'August 2019
+    ActiveWorkbook.Worksheets(1).Range("L64") = "August"
+    
+    ActiveWorkbook.Worksheets(1).Range("M64").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/08/2019"",C[-8],""<=31/08/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N64").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/08/2019"",C[-9],""<=31/08/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O64").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'September 2019
+    ActiveWorkbook.Worksheets(1).Range("L65") = "September"
+    
+    ActiveWorkbook.Worksheets(1).Range("M65").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/09/2019"",C[-8],""<=30/09/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N65").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/09/2019"",C[-9],""<=30/09/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O65").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'October 2019
+    ActiveWorkbook.Worksheets(1).Range("L66") = "October"
+    
+    ActiveWorkbook.Worksheets(1).Range("M66").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/10/2019"",C[-8],""<=31/10/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N66").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/10/2019"",C[-9],""<=31/10/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O66").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'November 2019
+    ActiveWorkbook.Worksheets(1).Range("L67") = "November"
+    
+    ActiveWorkbook.Worksheets(1).Range("M67").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/11/2019"",C[-8],""<=30/11/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N67").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/11/2019"",C[-9],""<=30/11/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O67").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'December 2019
+    ActiveWorkbook.Worksheets(1).Range("L68") = "December"
+    
+    ActiveWorkbook.Worksheets(1).Range("M68").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/12/2019"",C[-8],""<=31/12/2019"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N68").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/12/2019"",C[-9],""<=31/12/2019"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O68").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'2019 Total
+    ActiveWorkbook.Worksheets(1).Range("K69") = "Total"
+    
+    ActiveWorkbook.Worksheets(1).Range("M69").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("N69").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+    ActiveWorkbook.Worksheets(1).Range("O69").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+'2020
+    ActiveWorkbook.Worksheets(1).Range("K70:K81") = "2020"
+    
+'January 2020
+    ActiveWorkbook.Worksheets(1).Range("L70") = "January"
+    
+    ActiveWorkbook.Worksheets(1).Range("M70").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/01/2020"",C[-8],""<=31/01/2020"",C[-9],""C"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("N70").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/01/2020"",C[-9],""<=31/01/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O70").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'February 2020
+    ActiveWorkbook.Worksheets(1).Range("L71") = "February"
+    
+    ActiveWorkbook.Worksheets(1).Range("M71").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/02/2020"",C[-8],""<=29/02/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N71").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/02/2020"",C[-9],""<=29/02/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O71").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'March 2020
+    ActiveWorkbook.Worksheets(1).Range("L72") = "March"
+    
+    ActiveWorkbook.Worksheets(1).Range("M72").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/03/2020"",C[-8],""<=31/03/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N72").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/03/2020"",C[-9],""<=31/03/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O72").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'April 2020
+    ActiveWorkbook.Worksheets(1).Range("L73") = "April"
+    
+    ActiveWorkbook.Worksheets(1).Range("M73").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/04/2020"",C[-8],""<=30/04/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N73").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/04/2020"",C[-9],""<=30/04/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O73").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'May 2020
+    ActiveWorkbook.Worksheets(1).Range("L74") = "May"
+    
+    ActiveWorkbook.Worksheets(1).Range("M74").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/05/2020"",C[-8],""<=31/05/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N74").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/05/2020"",C[-9],""<=31/05/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O74").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'June 2020
+    ActiveWorkbook.Worksheets(1).Range("L75") = "June"
+    
+    ActiveWorkbook.Worksheets(1).Range("M75").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/06/2020"",C[-8],""<=30/06/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N75").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/06/2020"",C[-9],""<=30/06/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O75").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'July 2020
+    ActiveWorkbook.Worksheets(1).Range("L76") = "July"
+    
+    ActiveWorkbook.Worksheets(1).Range("M76").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/07/2020"",C[-8],""<=31/07/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N76").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/07/2020"",C[-9],""<=31/07/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O76").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'August 2020
+    ActiveWorkbook.Worksheets(1).Range("L77") = "August"
+    
+    ActiveWorkbook.Worksheets(1).Range("M77").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/08/2020"",C[-8],""<=31/08/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N77").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/08/2020"",C[-9],""<=31/08/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O77").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'September 2020
+    ActiveWorkbook.Worksheets(1).Range("L78") = "September"
+    
+    ActiveWorkbook.Worksheets(1).Range("M78").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/09/2020"",C[-8],""<=30/09/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N78").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/09/2020"",C[-9],""<=30/09/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O78").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'October 2020
+    ActiveWorkbook.Worksheets(1).Range("L79") = "October"
+    
+    ActiveWorkbook.Worksheets(1).Range("M79").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/10/2020"",C[-8],""<=31/10/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N79").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/10/2020"",C[-9],""<=31/10/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O79").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'November 2020
+    ActiveWorkbook.Worksheets(1).Range("L80") = "November"
+    
+    ActiveWorkbook.Worksheets(1).Range("M80").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/11/2020"",C[-8],""<=30/11/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N80").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/11/2020"",C[-9],""<=30/11/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O80").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'December 2020
+    ActiveWorkbook.Worksheets(1).Range("L81") = "December"
+    
+    ActiveWorkbook.Worksheets(1).Range("M81").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/12/2020"",C[-8],""<=31/12/2020"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N81").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/12/2020"",C[-9],""<=31/12/2020"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O81").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'2020 Total
+    ActiveWorkbook.Worksheets(1).Range("K82") = "Total"
+    
+    ActiveWorkbook.Worksheets(1).Range("M82").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("N82").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+    ActiveWorkbook.Worksheets(1).Range("O82").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+'2021
+    ActiveWorkbook.Worksheets(1).Range("K83:K94") = "2021"
+    
+'January 2021
+    ActiveWorkbook.Worksheets(1).Range("L83") = "January"
+    
+    ActiveWorkbook.Worksheets(1).Range("M83").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/01/2021"",C[-8],""<=31/01/2021"",C[-9],""C"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("N83").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/01/2021"",C[-9],""<=31/01/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O83").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'February 2021
+    ActiveWorkbook.Worksheets(1).Range("L84") = "February"
+    
+    ActiveWorkbook.Worksheets(1).Range("M84").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/02/2021"",C[-8],""<=28/02/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N84").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/02/2021"",C[-9],""<=28/02/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O84").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'March 2021
+    ActiveWorkbook.Worksheets(1).Range("L85") = "March"
+    
+    ActiveWorkbook.Worksheets(1).Range("M85").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/03/2021"",C[-8],""<=31/03/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N85").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/03/2021"",C[-9],""<=31/03/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O85").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'April 2021
+    ActiveWorkbook.Worksheets(1).Range("L86") = "April"
+    
+    ActiveWorkbook.Worksheets(1).Range("M86").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/04/2021"",C[-8],""<=30/04/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N86").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/04/2021"",C[-9],""<=30/04/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O86").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'May 2021
+    ActiveWorkbook.Worksheets(1).Range("L87") = "May"
+    
+    ActiveWorkbook.Worksheets(1).Range("M87").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/05/2021"",C[-8],""<=31/05/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N87").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/05/2021"",C[-9],""<=31/05/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O87").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'June 2021
+    ActiveWorkbook.Worksheets(1).Range("L88") = "June"
+    
+    ActiveWorkbook.Worksheets(1).Range("M88").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/06/2021"",C[-8],""<=30/06/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N88").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/06/2021"",C[-9],""<=30/06/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O88").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'July 2021
+    ActiveWorkbook.Worksheets(1).Range("L89") = "July"
+    
+    ActiveWorkbook.Worksheets(1).Range("M89").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/07/2021"",C[-8],""<=31/07/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N89").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/07/2021"",C[-9],""<=31/07/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O89").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'August 2021
+    ActiveWorkbook.Worksheets(1).Range("L90") = "August"
+    
+    ActiveWorkbook.Worksheets(1).Range("M90").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/08/2021"",C[-8],""<=31/08/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N90").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/08/2021"",C[-9],""<=31/08/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O90").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'September 2021
+    ActiveWorkbook.Worksheets(1).Range("L91") = "September"
+    
+    ActiveWorkbook.Worksheets(1).Range("M91").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/09/2021"",C[-8],""<=30/09/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N91").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/09/2021"",C[-9],""<=30/09/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O91").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'October 2021
+    ActiveWorkbook.Worksheets(1).Range("L92") = "October"
+    
+    ActiveWorkbook.Worksheets(1).Range("M92").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/10/2021"",C[-8],""<=31/10/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N92").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/10/2021"",C[-9],""<=31/10/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O92").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'November 2021
+    ActiveWorkbook.Worksheets(1).Range("L93") = "November"
+    
+    ActiveWorkbook.Worksheets(1).Range("M93").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/11/2021"",C[-8],""<=30/11/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N93").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/11/2021"",C[-9],""<=30/11/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O93").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+
+'December 2021
+    ActiveWorkbook.Worksheets(1).Range("L94") = "December"
+    
+    ActiveWorkbook.Worksheets(1).Range("M94").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-7],C[-8],"">=01/12/2021"",C[-8],""<=31/12/2021"",C[-9],""C"")"
+        
+    ActiveWorkbook.Worksheets(1).Range("N94").Select
+    ActiveCell.FormulaR1C1 = "=SUMIFS(C[-8],C[-9],"">=01/12/2021"",C[-9],""<=31/12/2021"",C[-10],""D"")"
+    
+    ActiveWorkbook.Worksheets(1).Range("O94").Select
+    ActiveCell.FormulaR1C1 = "=RC[-2]-RC[-1]"
+    
+'2021 Total
+    ActiveWorkbook.Worksheets(1).Range("K95") = "Total"
+    
+    ActiveWorkbook.Worksheets(1).Range("M95").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("N95").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+
+    ActiveWorkbook.Worksheets(1).Range("O95").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-12]C:R[-1]C)"
+    
+'Column Autofit
+    ActiveWorkbook.Worksheets(1).Columns("A:U").Select
+    ActiveWorkbook.Worksheets(1).Columns("A:U").EntireColumn.AutoFit
+    
+'2015 Final values
+    ActiveWorkbook.Worksheets(1).Range("M17:O17").Select
+    Selection.Copy
+    ActiveWorkbook.Worksheets(1).Range("R5").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+    
+'2016 Final values
+    ActiveWorkbook.Worksheets(1).Range("M30:O30").Select
+    Selection.Copy
+    ActiveWorkbook.Worksheets(1).Range("R6").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+    
+'2017 Final values
+    ActiveWorkbook.Worksheets(1).Range("M43:O43").Select
+    Selection.Copy
+    ActiveWorkbook.Worksheets(1).Range("R7").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+    
+'2018 Final values
+    ActiveWorkbook.Worksheets(1).Range("M56:O56").Select
+    Selection.Copy
+    ActiveWorkbook.Worksheets(1).Range("R8").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+    
+'2019 Final values
+    ActiveWorkbook.Worksheets(1).Range("M69:O69").Select
+    Selection.Copy
+    ActiveWorkbook.Worksheets(1).Range("R9").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+    
+'2020 Final values
+    ActiveWorkbook.Worksheets(1).Range("M82:O82").Select
+    Selection.Copy
+    ActiveWorkbook.Worksheets(1).Range("R10").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+   
+'2021 Final values
+    ActiveWorkbook.Worksheets(1).Range("M95:O95").Select
+    Selection.Copy
+    ActiveWorkbook.Worksheets(1).Range("R11").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+   
+'Total Validation
+    ActiveWorkbook.Worksheets(1).Range("R12").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-7]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("S12").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-7]C:R[-1]C)"
+    
+    ActiveWorkbook.Worksheets(1).Range("T12").Select
+    ActiveCell.FormulaR1C1 = "=SUM(R[-7]C:R[-1]C)"
+
+'Headers bold
+    ActiveWorkbook.Worksheets(1).Range("A1:G1", "M1:O1").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K4:T4").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K17:O17").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K30:O30").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K43:O43").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K56:O56").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K69:O69").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K82:O82").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K95:O95").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("Q12:T12").Select
+    Selection.Font.Bold = True
+    
+    ActiveWorkbook.Worksheets(1).Range("K3:T3").Select
+    Selection.Font.Bold = True
+    
+'Save Output as xlsx file
+    If ActiveWorkbook.Worksheets(1).Range("O2").Value < 0 Then
+    ActiveWorkbook.SaveAs Filename:=folderName & "\" & "Region Code_" & ActiveWorkbook.Worksheets(1).Range("A2").Value & "_Branch Code_" & ActiveWorkbook.Worksheets(1).Range("B2").Value & "_" & "Debit Balance", FileFormat:=51
+    Else
+    ActiveWorkbook.SaveAs Filename:=folderName & "\" & "Region Code_" & ActiveWorkbook.Worksheets(1).Range("A2").Value & "_Branch Code_" & ActiveWorkbook.Worksheets(1).Range("B2").Value & "_" & "Credit Balance", FileFormat:=51
+    End If
+    
+    ActiveWorkbook.Close
+    Application.DisplayAlerts = True
+    myFile = Dir
+    
+Loop
+
+End Sub
+
+
+
+
+
+
+
+
+
+
